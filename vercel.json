@@ -4,15 +4,11 @@
   "rewrites": [
     {
       "source": "/health",
-      "destination": "/api"
+      "destination": "/api/health"
     },
     {
       "source": "/approve",
-      "destination": "/api"
-    },
-    {
-      "source": "/api/(.*)",
-      "destination": "/api"
+      "destination": "/api/approve"
     },
     {
       "source": "/((?!api|health|approve).*)" ,

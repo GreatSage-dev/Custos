@@ -8,7 +8,7 @@
     "dev": "concurrently -n api,ui -c blue,magenta \"npm run server\" \"npm run client\"",
     "server": "tsx watch src/index.ts",
     "client": "vite",
-    "build": "vite build && tsc -p tsconfig.json && esbuild api/index.ts --bundle --platform=node --target=node18 --format=esm --outfile=api/index.js",
+    "build": "vite build && tsc -p tsconfig.json && esbuild api/health.ts --bundle --platform=node --target=node18 --format=esm --outfile=api/health.js && esbuild api/approve.ts --bundle --platform=node --target=node18 --format=esm --outfile=api/approve.js",
     "test": "vitest run",
     "mcp": "tsx src/mcp/server.ts"
   },
@@ -33,6 +33,7 @@
     "@types/node": "^20.14.9",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@vercel/node": "^3.2.14",
     "@vitejs/plugin-react": "^4.3.1",
     "concurrently": "^8.2.2",
     "esbuild": "^0.24.0",
