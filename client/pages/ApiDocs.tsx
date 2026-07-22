@@ -37,7 +37,7 @@ print(verdict["verdict"], verdict["recommended_payment"])`,
   };
 
   return (
-    <div className="api-docs-page" style={{ padding: '2rem 0 4rem' }}>
+    <div className="api-docs-page" style={{ padding: '3.5rem 0 4rem' }}>
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <span className="feat-tag">—— ASP DEVELOPER API ——</span>
@@ -62,18 +62,18 @@ print(verdict["verdict"], verdict["recommended_payment"])`,
           </p>
 
           <h4 style={{ color: 'var(--purple-l)', fontSize: '.85rem', marginBottom: '.6rem' }}>REQUEST BODY (JSON)</h4>
-          <pre style={{ background: 'rgba(0,0,0,0.4)', padding: '1rem', borderRadius: '10px', fontFamily: 'var(--mono)', fontSize: '.78rem', border: '1px solid var(--border)', color: '#c084fc', marginBottom: '1.25rem' }}>
+          <pre style={{ background: 'rgba(0,0,0,0.4)', padding: '1rem', borderRadius: '10px', fontFamily: 'var(--mono)', fontSize: '.76rem', border: '1px solid var(--border)', color: '#c084fc', marginBottom: '1.25rem', maxWidth: '100%', overflowX: 'auto', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
 {`{
   "provider_wallet": "string (EVM address)",
   "buyer_wallet":    "string (EVM address)",
   "service_price":   number (in OKB/USDT),
-  "service_category":"string (audit | code_generation | trading_signal | general)",
-  "deadline":        "string (optional ISO timestamp)"
+  "service_category":"string (audit | code | signal)",
+  "deadline":        "string (optional ISO)"
 }`}
           </pre>
 
           <h4 style={{ color: 'var(--purple-l)', fontSize: '.85rem', marginBottom: '.6rem' }}>RESPONSE BODY (JSON)</h4>
-          <pre style={{ background: 'rgba(0,0,0,0.4)', padding: '1rem', borderRadius: '10px', fontFamily: 'var(--mono)', fontSize: '.78rem', border: '1px solid var(--border)', color: '#86efac' }}>
+          <pre style={{ background: 'rgba(0,0,0,0.4)', padding: '1rem', borderRadius: '10px', fontFamily: 'var(--mono)', fontSize: '.76rem', border: '1px solid var(--border)', color: '#86efac', maxWidth: '100%', overflowX: 'auto', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
 {`{
   "verdict": "APPROVED | CAUTION",
   "reasoning": [ "Array of verifiable signal explanations" ],
