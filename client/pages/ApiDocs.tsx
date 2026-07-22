@@ -50,7 +50,7 @@ print(verdict["verdict"], verdict["recommended_payment"])`,
       </div>
 
       {/* Main Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '2.5rem' }}>
+      <div className="api-grid-2col" style={{ marginBottom: '2.5rem' }}>
         {/* Endpoint Details */}
         <div className="feat-card" style={{ padding: '1.75rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '.6rem', marginBottom: '1rem' }}>
@@ -116,7 +116,7 @@ print(verdict["verdict"], verdict["recommended_payment"])`,
       </div>
 
       {/* Protocol Protocols: x402 & MCP */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+      <div className="api-grid-2col">
         <div className="feat-card" style={{ padding: '1.5rem' }}>
           <div className="fc-icon-wrap amber" style={{ marginBottom: '.75rem' }}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" strokeWidth="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
