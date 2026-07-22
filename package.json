@@ -8,7 +8,7 @@
     "dev": "concurrently -n api,ui -c blue,magenta \"npm run server\" \"npm run client\"",
     "server": "tsx watch src/index.ts",
     "client": "vite",
-    "build": "vite build && tsc -p tsconfig.json && esbuild api/health.ts --bundle --platform=node --target=node18 --format=esm --outfile=api/health.js && esbuild api/approve.ts --bundle --platform=node --target=node18 --format=esm --outfile=api/approve.js",
+    "build": "vite build && tsc -p tsconfig.json",
     "test": "vitest run",
     "mcp": "tsx src/mcp/server.ts"
   },
