@@ -14,6 +14,23 @@ app.use(cors());
 app.use(express.json());
 app.use(x402Middleware);
 
+// Vercel serverless path normalization middleware
+app.use((req, _res, next) => {
+  const originalUrl = req.url;
+  const pathOnly = req.path;
+
+  if (pathOnly === '/api' || pathOnly === '/api/') {
+    if (req.method === 'POST') {
+      req.url = '/approve' + (originalUrl.includes('?') ? '?' + originalUrl.split('?')[1] : '');
+    } else if (req.method === 'GET') {
+      req.url = '/health' + (originalUrl.includes('?') ? '?' + originalUrl.split('?')[1] : '');
+    }
+  } else if (pathOnly.startsWith('/api/')) {
+    req.url = originalUrl.replace(/^\/api/, '');
+  }
+  next();
+});
+
 const publicPath = path.resolve(process.cwd(), 'public');
 app.use(express.static(publicPath));
 
@@ -25,7 +42,7 @@ const approveSchema = z.object({
   deadline: z.string().optional(),
 });
 
-app.get('/health', (_req: Request, res: Response) => {
+app.get(['/health', '/api/health'], (_req: Request, res: Response) => {
   res.json({
     status: 'ok',
     asp_name: 'Custos',
@@ -43,7 +60,7 @@ app.get('/health', (_req: Request, res: Response) => {
   });
 });
 
-app.post('/approve', async (req: Request, res: Response, next) => {
+app.post(['/approve', '/api/approve'], async (req: Request, res: Response, next) => {
   try {
     const parseResult = approveSchema.safeParse(req.body);
     if (!parseResult.success) {
