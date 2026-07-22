@@ -1201,26 +1201,26 @@ input:focus, select:focus {
 
 /* ═══ 17. Scroll Reveal Animation System ═══ */
 
-/* — Mask-Up: clip-mask + upward translation — */
+/* — Mask-Up: opacity + upward sweep (premium heading reveal) — */
 [data-reveal="mask-up"] {
-  clip-path: inset(0 0 100% 0);
-  transform: translateY(28px);
-  transition: clip-path 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 [data-reveal="mask-up"].revealed {
-  clip-path: inset(0 0 -10% 0);
+  opacity: 1;
   transform: translateY(0);
 }
 
-/* — Blur-Sharp: blurred + subtle scale to crisp — */
+/* — Blur-Sharp: subtle blur resolves to crisp — */
 [data-reveal="blur-sharp"] {
-  filter: blur(8px);
+  filter: blur(3px);
   opacity: 0;
-  transform: scale(0.97) translateY(6px);
-  transition: filter 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(0.98) translateY(6px);
+  transition: filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 [data-reveal="blur-sharp"].revealed {
   filter: blur(0);
@@ -1284,7 +1284,6 @@ input:focus, select:focus {
 /* — Reduced motion override — */
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] {
-    clip-path: none !important;
     filter: none !important;
     opacity: 1 !important;
     transform: none !important;
