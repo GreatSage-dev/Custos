@@ -5,6 +5,7 @@ import { CONFIG } from '../src/config';
 import { DecisionEngine } from '../src/services/decisionEngine';
 
 const app = express();
+app.set('json spaces', 2);
 let decisionEngine: DecisionEngine;
 
 try {
