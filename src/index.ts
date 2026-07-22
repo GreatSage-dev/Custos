@@ -62,7 +62,7 @@ app.post('/approve', async (req: Request, res: Response, next) => {
 
 app.use(errorHandler);
 
-if (process.env.NODE_ENV !== 'test') {
+if (!process.env.VERCEL && process.env.NODE_ENV !== 'test') {
   app.listen(CONFIG.PORT, () => {
     console.log(`=======================================================`);
     console.log(`🛡️ Custos ASP Server listening on http://localhost:${CONFIG.PORT}`);
