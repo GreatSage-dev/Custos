@@ -108,7 +108,7 @@ export default function Console() {
     if (isConnected && address) {
       runCheck(providerWallet, address, servicePrice, serviceCategory);
     }
-  }, [isConnected, activePreset]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [isConnected]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handlePresetChange = (key: string) => {
     const p = PRESETS[key];
@@ -117,11 +117,18 @@ export default function Console() {
     setProviderWallet(p.provider);
     setServicePrice(p.price);
     setServiceCategory(p.category);
+    const targetBuyer = buyerWallet || address || '';
+    if (targetBuyer) {
+      runCheck(p.provider, targetBuyer, p.price, p.category);
+    }
   };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    runCheck(providerWallet, buyerWallet, servicePrice, serviceCategory);
+    const targetBuyer = buyerWallet || address || '';
+    if (targetBuyer) {
+      runCheck(providerWallet, targetBuyer, servicePrice, serviceCategory);
+    }
   };
 
   const formatAddr = (a: string) => a ? `${a.slice(0, 6)}...${a.slice(-4)}` : '';
