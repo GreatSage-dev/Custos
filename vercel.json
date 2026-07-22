@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "outputDirectory": "dist/client",
   "rewrites": [
     {
       "source": "/health",
@@ -8,6 +9,10 @@
     {
       "source": "/approve",
       "destination": "/api"
+    },
+    {
+      "source": "/((?!api|health|approve).*)" ,
+      "destination": "/index.html"
     }
   ]
 }
