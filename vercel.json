@@ -11,6 +11,10 @@
       "destination": "/api"
     },
     {
+      "source": "/api/(.*)",
+      "destination": "/api"
+    },
+    {
       "source": "/((?!api|health|approve).*)" ,
       "destination": "/index.html"
     }

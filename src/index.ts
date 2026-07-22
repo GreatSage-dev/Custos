@@ -31,8 +31,14 @@ app.use((req, _res, next) => {
   next();
 });
 
-const publicPath = path.resolve(process.cwd(), 'public');
-app.use(express.static(publicPath));
+if (!process.env.VERCEL) {
+  try {
+    const publicPath = path.resolve(process.cwd(), 'public');
+    app.use(express.static(publicPath));
+  } catch (e) {
+    // Ignore static directory missing in serverless environment
+  }
+}
 
 const approveSchema = z.object({
   provider_wallet: z.string().regex(/^0x[a-fA-F0-9]{40}$/, 'Invalid provider wallet EVM address'),
@@ -42,7 +48,7 @@ const approveSchema = z.object({
   deadline: z.string().optional(),
 });
 
-app.get(['/health', '/api/health'], (_req: Request, res: Response) => {
+app.get(['/health', '/api/health', '/api'], (_req: Request, res: Response) => {
   res.json({
     status: 'ok',
     asp_name: 'Custos',
@@ -60,7 +66,7 @@ app.get(['/health', '/api/health'], (_req: Request, res: Response) => {
   });
 });
 
-app.post(['/approve', '/api/approve'], async (req: Request, res: Response, next) => {
+app.post(['/approve', '/api/approve', '/api'], async (req: Request, res: Response, next) => {
   try {
     const parseResult = approveSchema.safeParse(req.body);
     if (!parseResult.success) {
