@@ -2,7 +2,6 @@
   "name": "custos-okx-asp",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
   "description": "Custos — Pre-Transaction Decision Engine for OKX.AI",
   "scripts": {
     "dev": "concurrently -n api,ui -c blue,magenta \"npm run server\" \"npm run client\"",

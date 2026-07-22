@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { z } from 'zod';
-import { DecisionEngine } from '../dist/services/decisionEngine.js';
+import { DecisionEngine } from '../src/services/decisionEngine';
 
 const decisionEngine = new DecisionEngine();
 
