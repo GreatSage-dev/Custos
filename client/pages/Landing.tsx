@@ -1,22 +1,24 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function Landing() {
+  useScrollReveal();
+
   return (
     <div className="landing-page">
       {/* Hero Section */}
       <section className="landing-hero">
-        <div className="hero-badge">
+        <div className="hero-badge" data-reveal="blur-sharp">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           {' '}OKX.AI Genesis Hackathon • Finance Copilot
         </div>
-        <h1 className="hero-title">
+        <h1 className="hero-title" data-reveal="mask-up" data-delay="1">
           Secure Every AI Agent Transaction with <span className="hero-accent">Custos</span>
         </h1>
-        <p className="hero-sub">
+        <p className="hero-sub" data-reveal="blur-sharp" data-delay="2">
           The pre-transaction decision engine for OKX.AI. Custos evaluates provider history, price deviation, and sybil patterns before your agent executes payment.
         </p>
-        <div className="hero-actions">
+        <div className="hero-actions" data-reveal="fade-slide" data-delay="3">
           <Link to="/console" className="btn-primary" style={{ display: 'inline-flex', gap: '8px', alignItems: 'center' }}>
             Enter Console
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -29,7 +31,7 @@ export default function Landing() {
       </section>
 
       {/* Verdict Preview Section */}
-      <section className="verdict-preview-section">
+      <section className="verdict-preview-section" data-reveal="fade-slide">
         <div className="verdict-preview-card glass-card">
           <div className="browser-chrome">
             <div className="browser-dots">
@@ -45,12 +47,12 @@ export default function Landing() {
             </div>
             <span className="vp-payment-structure">Payment: full_upfront</span>
           </div>
-          <ul className="vp-reasoning">
+          <ul className="vp-reasoning" data-reveal="stagger">
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Provider has an established history on X Layer.</li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Service price is within the 10% expected deviation.</li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> No wash trading or sybil characteristics detected.</li>
           </ul>
-          <div className="vp-metrics">
+          <div className="vp-metrics" data-reveal="stagger">
             <div className="vp-mcard">
               <span className="label">Wallet Age</span>
               <span className="value">120d</span>
@@ -72,13 +74,16 @@ export default function Landing() {
       </section>
 
       {/* Features Grid */}
-      <section id="features" className="features-section">
+      <section id="features" className="features-section" style={{ position: 'relative', overflow: 'hidden' }}>
+        {/* Parallax scroll-scrubbed watermark */}
+        <div className="scroll-parallax-text" data-reveal="parallax">CUSTOS</div>
+
         <div className="feat-header">
-          <span className="feat-tag">PLATFORM CAPABILITIES</span>
-          <h2 className="feat-title">Intelligence Built for Agents</h2>
-          <p className="feat-sub">Every dimension of transaction risk is analyzed in milliseconds before your agent authorizes payment.</p>
+          <span className="feat-tag" data-reveal="blur-sharp">PLATFORM CAPABILITIES</span>
+          <h2 className="feat-title" data-reveal="mask-up">Intelligence Built for Agents</h2>
+          <p className="feat-sub" data-reveal="blur-sharp" data-delay="1">Every dimension of transaction risk is analyzed in milliseconds before your agent authorizes payment.</p>
         </div>
-        <div className="features-grid">
+        <div className="features-grid" data-reveal="stagger">
           <div className="feat-card">
             <div className="fc-icon-wrap purple">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
@@ -118,7 +123,7 @@ export default function Landing() {
       </section>
 
       {/* SDK Preview Section */}
-      <section className="sdk-section">
+      <section className="sdk-section" data-reveal="fade-slide">
         <div className="sdk-block">
           <div className="sdk-toolbar">
             <div className="browser-dots">
@@ -149,7 +154,7 @@ const { decision, paymentResult } = await custos.guard(
       </section>
 
       {/* Footer */}
-      <footer className="footer">
+      <footer className="footer" data-reveal="blur-sharp">
         <div className="footer-inner">
           <div className="footer-brand">
             <strong>Custos</strong>

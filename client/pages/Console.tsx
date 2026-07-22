@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, type FormEvent } from 'react';
 import { useAccount } from 'wagmi';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 interface Preset {
   provider: string;
@@ -31,6 +32,7 @@ interface VerdictData {
 
 export default function Console() {
   const { address, isConnected } = useAccount();
+  useScrollReveal([isConnected]);
   const [activePreset, setActivePreset] = useState('established');
   const [providerWallet, setProviderWallet] = useState(PRESETS.established.provider);
   const [buyerWallet, setBuyerWallet] = useState('');
@@ -138,13 +140,17 @@ export default function Console() {
   if (!isConnected) {
     return (
       <div className="wallet-gate">
-        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          <path d="m9 12 2 2 4-4"/>
-        </svg>
-        <h2>Connect Your Wallet</h2>
-        <p>Connect your X Layer Testnet wallet to access the Custos decision engine console.</p>
-        <ConnectButton />
+        <div data-reveal="blur-sharp">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <h2 data-reveal="mask-up" data-delay="1">Connect Your Wallet</h2>
+        <p data-reveal="blur-sharp" data-delay="2">Connect your X Layer Testnet wallet to access the Custos decision engine console.</p>
+        <div data-reveal="fade-slide" data-delay="3">
+          <ConnectButton />
+        </div>
       </div>
     );
   }
@@ -153,7 +159,7 @@ export default function Console() {
   return (
     <div className="console-page">
       {/* Header */}
-      <div className="console-header">
+      <div className="console-header" data-reveal="fade-slide">
         <h2>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
           {' '}Decision Console
@@ -168,7 +174,7 @@ export default function Console() {
       </div>
 
       {/* Scenario Pills */}
-      <div className="scenario-pills">
+      <div className="scenario-pills" data-reveal="stagger">
         {([
           ['established', 'Established', 'M22 11.08V12a10 10 0 1 1-5.93-9.14 M9 11l3 3L22 4'],
           ['price_spike', 'Price Spike', 'M13 2l-2 9h7L11 22'],
@@ -193,7 +199,7 @@ export default function Console() {
       {/* Two Column Grid */}
       <div className="console-grid">
         {/* ── Left: Input ── */}
-        <div className="console-input">
+        <div className="console-input" data-reveal="fade-slide">
           <div className="col-header">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
             <h3>Transaction Input</h3>
@@ -240,7 +246,7 @@ export default function Console() {
         </div>
 
         {/* ── Right: Output ── */}
-        <div className="console-output">
+        <div className="console-output" data-reveal="fade-slide" data-delay="1">
           <div className="col-header">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             <h3>Decision Verdict</h3>

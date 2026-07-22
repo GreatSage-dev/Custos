@@ -1,11 +1,14 @@
 import { useState } from 'react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function ApiDocs() {
+  useScrollReveal();
+
   const [activeTab, setActiveTab] = useState<'curl' | 'ts' | 'python'>('curl');
 
   const snippets = {
-    curl: `curl -X POST http://localhost:3000/approve \\
-  -H "Content-Type: application/json" \\
+    curl: `curl -X POST http://localhost:3000/approve \\\\
+  -H "Content-Type: application/json" \\\\
   -d '{
     "provider_wallet": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
     "buyer_wallet": "0x1234567890abcdef1234567890abcdef12345678",
@@ -40,17 +43,17 @@ print(verdict["verdict"], verdict["recommended_payment"])`,
     <div className="api-docs-page" style={{ padding: '3.5rem 0 4rem' }}>
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-        <span className="feat-tag">—— ASP DEVELOPER API ——</span>
-        <h1 className="hero-title" style={{ fontSize: '2.5rem', margin: '.6rem 0' }}>
+        <span className="feat-tag" data-reveal="blur-sharp">—— ASP DEVELOPER API ——</span>
+        <h1 className="hero-title" style={{ fontSize: '2.5rem', margin: '.6rem 0' }} data-reveal="mask-up" data-delay="1">
           Custos <span className="hero-accent">API & Specification</span>
         </h1>
-        <p className="hero-sub" style={{ maxWidth: '640px', margin: '0 auto' }}>
+        <p className="hero-sub" style={{ maxWidth: '640px', margin: '0 auto' }} data-reveal="blur-sharp" data-delay="2">
           Integrate the pre-transaction decision engine into any AI agent, MCP client, or automated payment pipeline on X Layer.
         </p>
       </div>
 
       {/* Main Grid */}
-      <div className="api-grid-2col" style={{ marginBottom: '2.5rem' }}>
+      <div className="api-grid-2col" style={{ marginBottom: '2.5rem' }} data-reveal="stagger">
         {/* Endpoint Details */}
         <div className="feat-card" style={{ padding: '1.75rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '.6rem', marginBottom: '1rem' }}>
@@ -115,8 +118,8 @@ print(verdict["verdict"], verdict["recommended_payment"])`,
         </div>
       </div>
 
-      {/* Protocol Protocols: x402 & MCP */}
-      <div className="api-grid-2col">
+      {/* Protocol Cards: x402 & MCP */}
+      <div className="api-grid-2col" data-reveal="stagger">
         <div className="feat-card" style={{ padding: '1.5rem' }}>
           <div className="fc-icon-wrap amber" style={{ marginBottom: '.75rem' }}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" strokeWidth="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
@@ -139,7 +142,7 @@ print(verdict["verdict"], verdict["recommended_payment"])`,
       </div>
 
       {/* Raw Health Discovery Manifest Link */}
-      <div style={{ marginTop: '2.5rem', textAlign: 'center', background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '16px', padding: '1.5rem' }}>
+      <div style={{ marginTop: '2.5rem', textAlign: 'center', background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '16px', padding: '1.5rem' }} data-reveal="fade-slide">
         <p style={{ color: 'var(--text2)', fontSize: '.9rem', marginBottom: '.75rem' }}>
           Looking for the raw machine-readable Agent Service Provider discovery manifest?
         </p>
