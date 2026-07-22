@@ -200,9 +200,30 @@ body:hover .cursor-glow {
 }
 
 .hero-accent {
-  background: linear-gradient(to right, var(--purple-l), var(--purple));
-  -webkit-background-clip: text;
+  background: linear-gradient(
+    110deg,
+    #a78bfa 0%,
+    #c084fc 20%,
+    #ffffff 50%,
+    #c084fc 80%,
+    #7c3aed 100%
+  );
+  background-size: 200% auto;
   color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-shimmer 3.5s linear infinite;
+  display: inline-block;
+  text-shadow: 0 0 30px rgba(167, 139, 250, 0.4);
+}
+
+@keyframes text-shimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
 }
 
 .hero-sub {
